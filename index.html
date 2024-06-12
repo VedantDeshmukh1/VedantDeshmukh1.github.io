@@ -148,16 +148,21 @@
             <span id="msg"></span>
         </section>
 
-        <footer class="footer">
-            <div class="footer-text">
-                <p>Copyright &copy; 2024 by Vedant Deshmukh | All Rights Reserved.</p>
-                <p>Visitors: <span id="visitor-count" style="color: #4169E1;">0</span></p>
-            </div>
-            <div class="footer-iconTop">
-                <a href="#home"><i class='bx bx-up-arrow-alt' ></i></a>
-            </div>
-        </footer>
-
+         <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2024 by Vedant Deshmukh | All Rights Reserved.</p>
+            <p>Visitors: <span id="visitor-count" style="color: #4169E1;">0</span></p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#home"><i class='bx bx-up-arrow-alt' ></i></a>
+        </div>
+    </footer>
+        <script>
+        function cb(response) {
+            document.getElementById('visitor-count').innerText = response.value;
+        }
+    </script>
+    <script async src="https://api.countapi.xyz/hit/vedantdeshmukh1.github.io/visits?callback=cb"></script>
         <script src="https://unpkg.com/scrollreveal"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
