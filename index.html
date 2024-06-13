@@ -130,7 +130,7 @@
                     
             </div>
         </section>
-       <section class="contact" id="contact">
+      <section class="contact" id="contact">
   <h2 class="heading">Contact<span>ME!</span></h2>
 
   <form action="#" name="submit-to-google-sheet">
@@ -147,6 +147,14 @@
   </form>
   <span id="msg"></span>
 </section>
+
+<style>
+  #msg {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+</style>
 
 <script>
   const form = document.querySelector('form');
@@ -193,7 +201,7 @@ Your Message: ${data['Your Message']}
     // Remove the temporary link from the document body
     document.body.removeChild(link);
   }
-</script>
+</script>>
          <footer class="footer">
         <div class="footer-text">
             <p>Copyright &copy; 2024 by Vedant Deshmukh | All Rights Reserved.</p>
