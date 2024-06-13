@@ -130,24 +130,70 @@
                     
             </div>
         </section>
-        <section class="contact"id="contact">
-            <h2 class="heading">Contact<span>ME!</span></h2>
+       <section class="contact" id="contact">
+  <h2 class="heading">Contact<span>ME!</span></h2>
 
-            <form action="#" name="submit-to-google-sheet">
-                <div class="input-box">
-                    <input type="text" name="Name" placeholder="Full Name">
-                    <input type="email" name="Email Address" placeholder="Email Address">
-                </div>
-                <div class="input-box">
-                    <input type="number" name="Mobile Number"placeholder="Mobile Number">
-                    <input type="text"name="Email Subject" placeholder="Email Subject">
-                </div>
-                <textarea name="Your Message" id="" cols="30" rows="10"placeholder="Your Message"></textarea>
-                <input type="submit" value="Send Message"class="btn">
-            </form>
-            <span id="msg"></span>
-        </section>
+  <form action="#" name="submit-to-google-sheet">
+    <div class="input-box">
+      <input type="text" name="Name" placeholder="Full Name" required>
+      <input type="email" name="Email Address" placeholder="Email Address" required>
+    </div>
+    <div class="input-box">
+      <input type="number" name="Mobile Number" placeholder="Mobile Number" required>
+      <input type="text" name="Email Subject" placeholder="Email Subject" required>
+    </div>
+    <textarea name="Your Message" id="" cols="30" rows="10" placeholder="Your Message" required></textarea>
+    <input type="submit" value="Send Message" class="btn">
+  </form>
+  <span id="msg"></span>
+</section>
 
+<script>
+  const form = document.querySelector('form');
+  const msg = document.getElementById('msg');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    // Save the form data to a text file
+    saveFormData(data);
+
+    // Display success message
+    msg.innerHTML = 'Message sent successfully!';
+    msg.style.color = 'green';
+
+    // Reset the form
+    form.reset();
+  });
+
+  function saveFormData(data) {
+    const fileContent = `Name: ${data.Name}
+Email Address: ${data['Email Address']}
+Mobile Number: ${data['Mobile Number']}
+Email Subject: ${data['Email Subject']}
+Your Message: ${data['Your Message']}
+------------------------
+`;
+
+    // Create a new Blob with the file content
+    const blob = new Blob([fileContent], { type: 'text/plain' });
+
+    // Create a temporary link element
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'form-data.txt';
+
+    // Append the link to the document body and click it
+    document.body.appendChild(link);
+    link.click();
+
+    // Remove the temporary link from the document body
+    document.body.removeChild(link);
+  }
+</script>
          <footer class="footer">
         <div class="footer-text">
             <p>Copyright &copy; 2024 by Vedant Deshmukh | All Rights Reserved.</p>
